@@ -11,7 +11,7 @@ const heroes = [
         name: 'Flint Ironstag',
         type: 'ninja',
         damage: 10,
-        health: 50
+        health: -50
     }
 ]
 
@@ -22,24 +22,82 @@ const boss = {
     level: 1
 }
 
+let gold = 0
+
 //Variables and arrays end here
 
 //NOTE Code Starts here
-
-bossAttack()
+updatePage()
+setInterval(bossAttack, 5000)
 //Code Ends here
 
 //NOTE Functions start here
 
-//Boss picks a random hero from the array and deals it's dmg to them
+//Boss picks a random hero from the array and deals it's dmg to them, changes target if target is dead, does nothing if all heroes dead
 function bossAttack() {
     let target
-    let randomTarget = Math.floor(Math.random() * heroes.length)
+    let partyHp = checkHeroesHealth()
+    let randomTarget = Math.floor(Math.random() * heroes.length) //randomly selects target
     console.log(randomTarget)
-    target = heroes[randomTarget]
-    console.log(target)
-    target.health -= boss.damage
-    console.log(target.name, 'is at', target.health, 'hp')
+    target = heroes[randomTarget] //if first target is alive
+    if (target.health > 0 && partyHp > 0) {
+        console.log(`attacking primary ${target.name}`)
+        target.health -= boss.damage
+    }
+    else if (partyHp > 0) { //if first target is dead, but there are still living heroes
+        console.log(`${target.name} is dead`)
+        target = heroes.find(hero => hero.health > 0)
+        console.log(`${target.name} is next`)
+        target.health -= boss.damage
+        console.log(`${target.name} took ${boss.damage} dmg and is at ${target.health} hp`)
+    }
+    else { //if all heroes are dead
+        console.log(`all heroes are dead`)
+    }
+    // checkHeroesHealth()
+    updatePage()
+}
+
+function bossDead() {
+    let loot = boss.level * 50 //gives gold based on boss level
+    console.log(`heroes get ${loot}`)
+    gold += loot
+
+    boss.level++ //levels up boss and sets new stats based on level
+    boss.damage = 5 * boss.level
+    boss.health = 100 * boss.level
+    boss.maxHealth = 100 * boss.level
+    console.log(`boss reached lv ${boss.level} now deals ${boss.damage} damage and has ${boss.health}/${boss.maxHealth} hp`)
+    updatePage()
+}
+
+//sums heroes damage and deals it to the boss
+function heroesAttack() {
+    let partyDmg = 0
+    heroes.forEach(hero => { partyDmg += hero.damage });
+    boss.health -= partyDmg
+    console.log(`the party dealt ${partyDmg} damage, the boss is at ${boss.health}/${boss.maxHealth}`)
+    checkBossHealth()
+    updatePage()
+}
+
+function checkBossHealth() {
+    if (boss.health <= 0) {
+        console.log(`heroes win!`)
+        bossDead()
+    }
+}
+
+//checks and returns heroes total hp if any heroes are at negative hp, their hp is set to 0
+function checkHeroesHealth() {
+    let partyHp = 0
+    heroes.forEach(hero => { if (hero.health < 0) { hero.health = 0 } }) //sets any negative hp to 0
+    heroes.forEach(hero => partyHp += hero.health) //sums all hero health into partyHp
+    console.log(`party HP is ${partyHp}`)
+    if (partyHp <= 0) {
+        console.log(`heroes lose`)
+    }
+    return partyHp
 }
 
 //Updates all the html elements to match their JavaScript variables
@@ -50,7 +108,8 @@ function updatePage() {
     hero2HpElm.innerHTML = `HP: ${heroes[1].health}`
     let bossHpElm = document.getElementById('boss-hp')
     bossHpElm.innerHTML = `HP: ${boss.health}/${boss.maxHealth}`
-
+    let bossLvElm = document.getElementById('boss-lv')
+    bossLvElm.innerHTML = `Lv: ${boss.level}`
 }
 
 
