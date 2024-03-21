@@ -13,7 +13,7 @@
         defer></script>
 </head>
 
-<body class="debug">
+<body class="">
     <main class="container-fluid">
         <!-- Hero Cards start here -->
         <section class="row justify-content-start">
@@ -41,7 +41,7 @@
                         <hr />
                     </h1>
                 </div>
-                <div class="row p-2">
+                <div class="row">
                     <h5 id="hero-2-hp">HP: 50</h5>
                     <h5 id="hero-2-lv">Lv: 1</h5>
                 </div>
@@ -85,7 +85,14 @@
                 </div>
             </div>
             <!-- Shop Card starts here -->
-
+            <div class="col-2 bg-white">
+                <div class="row justify-content-center">
+                    <h5 class="text-center">Kill Tracker
+                        <hr class="m-2 mb-0" />
+                    </h5>
+                    <h1 id="kill-tracker" class="align-middle text-center">0</h1>
+                </div>
+            </div>
             <!-- Reset Button starts here -->
             <div class="col-2 text-end align-text-bottom">
                 <button onclick="reset()">reset button</button>

@@ -27,6 +27,7 @@ const boss = {
 }
 let textBubbleElm = document.getElementById('text-bubble') //will be used for outputting
 let gold = 0
+let killTracker = 0
 
 //Variables and arrays end here
 
@@ -69,6 +70,7 @@ function bossDead() {
     let loot = boss.level * 50 //gives gold based on boss level
     console.log(`heroes get ${loot}`)
     gold += loot
+    killTracker++
     textBubbleElm.innerHTML = `You're only making me stronger!`
     bossLevel()
     console.log(`boss reached lv ${boss.level} now deals ${boss.damage} damage and has ${boss.health}/${boss.maxHealth} hp`)
@@ -142,6 +144,7 @@ function reset() {
     });
     gold = 0
     boss.level = 0
+    killTracker = 0
     bossLevel()
     updatePage()
     textBubbleElm.innerHTML = `Pesky time travelers!`
@@ -159,6 +162,8 @@ function updatePage() {
     bossLvElm.innerHTML = `Lv: ${boss.level}`
     let goldElm = document.getElementById('gold')
     goldElm.innerHTML = `${gold}`
+    let killTrackerElm = document.getElementById('kill-tracker')
+    killTrackerElm.innerHTML = `${killTracker}`
 }
 
 
