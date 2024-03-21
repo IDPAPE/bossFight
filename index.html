@@ -13,7 +13,7 @@
         defer></script>
 </head>
 
-<body class="debug">
+<body class="">
     <main class="container-fluid">
         <!-- Hero Cards start here -->
         <section class="row justify-content-start">
@@ -21,7 +21,7 @@
             <!-- First Hero Card Start-->
             <div class="col-2 m-3 border border-primary border-5">
                 <div class="row text-center">
-                    <h3>Hero 1 Name</h3>
+                    <h3>Merlin</h3>
                     <h1>🧙‍♂️</h1>
                 </div>
                 <div class="row p-2">
@@ -33,7 +33,7 @@
             <!-- Second Hero Card Start -->
             <div class="col-2 m-3 border border-dark border-5">
                 <div class="row text-center">
-                    <h3>Hero 2 Name</h3>
+                    <h3>Naruto</h3>
                     <h1>🥷</h1>
                 </div>
                 <div class="row p-2">
@@ -58,9 +58,21 @@
         <!-- Menu cards start here -->
         <section class="row justify-content-between p-3">
             <!-- Shop Card Starts here -->
-            <div class="col-4 border border-5 border-warning">
-                <h2>Shop</h2>
-                <h3>Healing Potion</h3>
+            <div class="col-6 border border-5 border-warning">
+                <div class="row">
+                    <div class="col">
+                        <h2>Shop</h2>
+                    </div>
+                    <div class="col text-end">
+                        <h5>
+                            Gold: <span id="gold">00</span>
+                        </h5>
+                    </div>
+                </div>
+                <h3>Healing Potion
+                    <button id="hero-1-potion" class="m-2" onclick="healingPotion('Merlin')">H1</button>
+                    <button id="hero-2-potion" class="m-2" onclick="healingPotion('Naruto')">H2</button>
+                </h3>
             </div>
             <!-- Shop Card starts here -->
 

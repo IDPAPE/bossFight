@@ -2,16 +2,16 @@
 
 const heroes = [
     {
-        name: 'Slate Slabrock',
+        name: 'Merlin',
         type: 'wizard',
         damage: 5,
         health: 100
     },
     {
-        name: 'Flint Ironstag',
+        name: 'Naruto',
         type: 'ninja',
         damage: 10,
-        health: -50
+        health: 50
     }
 ]
 
@@ -100,6 +100,24 @@ function checkHeroesHealth() {
     return partyHp
 }
 
+function healingPotion(heroName) {
+    if (gold >= 25) {
+        if (heroName == 'Merlin') {
+            console.log(`selected Merlin`)
+            heroes[0].health += 15
+        }
+        else if (heroName == 'Naruto') {
+            console.log(`selected Naruto`)
+            heroes[1].health += 15
+        }
+        gold -= 25
+    }
+    else {
+        console.log('not enough money')
+    }
+    updatePage()
+}
+
 //Updates all the html elements to match their JavaScript variables
 function updatePage() {
     let hero1HpElm = document.getElementById('hero-1-hp')
@@ -110,6 +128,8 @@ function updatePage() {
     bossHpElm.innerHTML = `HP: ${boss.health}/${boss.maxHealth}`
     let bossLvElm = document.getElementById('boss-lv')
     bossLvElm.innerHTML = `Lv: ${boss.level}`
+    let goldElm = document.getElementById('gold')
+    goldElm.innerHTML = `${gold}`
 }
 
 
