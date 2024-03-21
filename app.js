@@ -5,13 +5,17 @@ const heroes = [
         name: 'Merlin',
         type: 'wizard',
         damage: 5,
-        health: 100
+        baseDamage: 5,
+        health: 100,
+        baseHealth: 100
     },
     {
         name: 'Naruto',
         type: 'ninja',
         damage: 10,
-        health: 50
+        baseDamage: 10,
+        health: 50,
+        baseHealth: 50
     }
 ]
 
@@ -66,12 +70,17 @@ function bossDead() {
     console.log(`heroes get ${loot}`)
     gold += loot
     textBubbleElm.innerHTML = `You're only making me stronger!`
-    boss.level++ //levels up boss and sets new stats based on level
+    bossLevel()
+    console.log(`boss reached lv ${boss.level} now deals ${boss.damage} damage and has ${boss.health}/${boss.maxHealth} hp`)
+    updatePage()
+}
+
+//levels up boss and sets new stats based on level
+function bossLevel() {
+    boss.level++
     boss.damage = 5 * boss.level
     boss.health = 100 * boss.level
     boss.maxHealth = 100 * boss.level
-    console.log(`boss reached lv ${boss.level} now deals ${boss.damage} damage and has ${boss.health}/${boss.maxHealth} hp`)
-    updatePage()
 }
 
 //sums heroes damage and deals it to the boss
@@ -121,6 +130,21 @@ function healingPotion(heroName) {
         console.log('not enough money')
     }
     updatePage()
+}
+
+//reset
+function reset() {
+    heroes.forEach(hero => {
+        hero.health = hero.baseHealth
+        console.log(hero.health)
+        hero.damage = hero.baseDamage
+        hero.damage = hero.baseDamage
+    });
+    gold = 0
+    boss.level = 0
+    bossLevel()
+    updatePage()
+    textBubbleElm.innerHTML = `Pesky time travelers!`
 }
 
 //Updates all the html elements to match their JavaScript variables
