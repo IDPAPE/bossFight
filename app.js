@@ -21,7 +21,7 @@ const boss = {
     damage: 5,
     level: 1
 }
-
+let textBubbleElm = document.getElementById('text-bubble') //will be used for outputting
 let gold = 0
 
 //Variables and arrays end here
@@ -43,6 +43,7 @@ function bossAttack() {
     if (target.health > 0 && partyHp > 0) {
         console.log(`attacking primary ${target.name}`)
         target.health -= boss.damage
+        textBubbleElm.innerHTML = `You don't stand a chance ${target.name}!`
     }
     else if (partyHp > 0) { //if first target is dead, but there are still living heroes
         console.log(`${target.name} is dead`)
@@ -50,9 +51,11 @@ function bossAttack() {
         console.log(`${target.name} is next`)
         target.health -= boss.damage
         console.log(`${target.name} took ${boss.damage} dmg and is at ${target.health} hp`)
+        textBubbleElm.innerHTML = `What will you do without your friend ${target.name}!?`
     }
     else { //if all heroes are dead
         console.log(`all heroes are dead`)
+        textBubbleElm.innerHTML = `Ha! the tiny humans were crushed!`
     }
     // checkHeroesHealth()
     updatePage()
@@ -62,7 +65,7 @@ function bossDead() {
     let loot = boss.level * 50 //gives gold based on boss level
     console.log(`heroes get ${loot}`)
     gold += loot
-
+    textBubbleElm.innerHTML = `You're only making me stronger!`
     boss.level++ //levels up boss and sets new stats based on level
     boss.damage = 5 * boss.level
     boss.health = 100 * boss.level
@@ -100,6 +103,7 @@ function checkHeroesHealth() {
     return partyHp
 }
 
+//heals the specified hero if there is sufficient gold
 function healingPotion(heroName) {
     if (gold >= 25) {
         if (heroName == 'Merlin') {
@@ -111,6 +115,7 @@ function healingPotion(heroName) {
             heroes[1].health += 15
         }
         gold -= 25
+        textBubbleElm.innerHTML = `Stop healing Cowards!`
     }
     else {
         console.log('not enough money')

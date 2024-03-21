@@ -19,22 +19,27 @@
         <section class="row justify-content-start">
 
             <!-- First Hero Card Start-->
-            <div class="col-2 m-3 border border-primary border-5">
+            <div class="col-2 m-3 border border-primary border-5 bg-white">
                 <div class="row text-center">
                     <h3>Merlin</h3>
-                    <h1>🧙‍♂️</h1>
+                    <h1>🧙‍♂️
+                        <hr />
+                    </h1>
+
                 </div>
-                <div class="row p-2">
+                <div class="row">
                     <h5 id="hero-1-hp">HP: 100</h5>
                     <h5 id="hero-1-lv">Lv: 1</h5>
                 </div>
             </div>
 
             <!-- Second Hero Card Start -->
-            <div class="col-2 m-3 border border-dark border-5">
+            <div class="col-2 m-3 border border-dark border-5 bg-white">
                 <div class="row text-center">
                     <h3>Naruto</h3>
-                    <h1>🥷</h1>
+                    <h1>🥷
+                        <hr />
+                    </h1>
                 </div>
                 <div class="row p-2">
                     <h5 id="hero-2-hp">HP: 50</h5>
@@ -46,11 +51,14 @@
 
         <!-- Boss Card Starts Here -->
         <section class="row text-center justify-content-center p-3">
-            <div class="col-6 border border-5 border-danger" onclick="heroesAttack()">
+            <div class="col-6 border border-5 border-danger bg-white" onclick="heroesAttack()">
                 <h3 id="boss-hp">100/100</h3>
                 <h2 id="boss-name">Boss Name</h2>
                 <h1 id="boss-icon">🧛</h1>
                 <h3 id="boss-lv">Lv: 1</h3>
+            </div>
+            <div class="ms-3 p-3 col-4 rounded-5 bg-white">
+                <h5 id="text-bubble"></h5>
             </div>
         </section>
         <!-- Boss Card Ends Here -->
@@ -59,7 +67,7 @@
         <section class="row justify-content-between p-3">
             <!-- Shop Card Starts here -->
             <div class="col-6 border border-5 border-warning">
-                <div class="row">
+                <div class="row bg-warning-subtle">
                     <div class="col">
                         <h2>Shop</h2>
                     </div>
@@ -69,10 +77,12 @@
                         </h5>
                     </div>
                 </div>
-                <h3>Healing Potion
-                    <button id="hero-1-potion" class="m-2" onclick="healingPotion('Merlin')">H1</button>
-                    <button id="hero-2-potion" class="m-2" onclick="healingPotion('Naruto')">H2</button>
-                </h3>
+                <div class="row bg-white">
+                    <h3>Healing Potion
+                        <button id="hero-1-potion" class="m-2" onclick="healingPotion('Merlin')">H1</button>
+                        <button id="hero-2-potion" class="m-2" onclick="healingPotion('Naruto')">H2</button>
+                    </h3>
+                </div>
             </div>
             <!-- Shop Card starts here -->
 
