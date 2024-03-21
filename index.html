@@ -16,11 +16,67 @@
 <body class="debug">
     <main class="container-fluid">
         <!-- Hero Cards start here -->
-        <section class="col justify-content-center">
+        <section class="row justify-content-start">
 
+            <!-- First Hero Card Start-->
+            <div class="col-2 m-3 border border-primary border-5">
+                <div class="row text-center">
+                    <h3>Hero 1 Name</h3>
+                    <h1>🧙‍♂️</h1>
+                </div>
+                <div class="row p-2">
+                    <h5 id="hero-1-hp">HP: 100</h5>
+                    <h5 id="hero-1-gold">Gold: 0</h5>
+                    <h5 id="hero-1-lv">Lv: 1</h5>
+                </div>
+            </div>
+
+            <!-- Second Hero Card Start -->
+            <div class="col-2 m-3 border border-dark border-5">
+                <div class="row text-center">
+                    <h3>Hero 2 Name</h3>
+                    <h1>🥷</h1>
+                </div>
+                <div class="row p-2">
+                    <h5 id="hero-2-hp">HP: 50</h5>
+                    <h5 id="hero-2-gold">Gold: 0</h5>
+                    <h5 id="hero-2-lv">Lv: 1</h5>
+                </div>
+            </div>
         </section>
         <!-- Hero Cards end here -->
+
+        <!-- Boss Card Starts Here -->
+        <section class="row text-center justify-content-center p-3">
+            <div class="col-6 border border-5 border-danger">
+                <h3 id="boss-hp">100/100</h3>
+                <h2 id="boss-name">Boss Name</h2>
+                <h1 id="boss-icon">🧛</h1>
+            </div>
+        </section>
+        <!-- Boss Card Ends Here -->
+
+        <!-- Menu cards start here -->
+        <section class="row justify-content-between p-3">
+            <!-- Shop Card Starts here -->
+            <div class="col-4 border border-5 border-warning">
+                <h2>Shop</h2>
+                <h3>Healing Potion</h3>
+            </div>
+            <!-- Shop Card starts here -->
+
+            <!-- Reset Button starts here -->
+            <div class="col-2 text-end justify-content-center">
+                <button>reset button</button>
+            </div>
+            <!-- Reset Button ends here -->
+        </section>
+
+
+
+        <!-- Menu cards end here -->
     </main>
+    <script src="app.js"></script>
 </body>
 
 </html>
